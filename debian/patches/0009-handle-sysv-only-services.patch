@@ -1,0 +1,34 @@
+Author: Apollon Oikonomopoulos <apoikos@debian.org>
+Description: Handle SysV-only services in the Debian provider
+ Under Jessie, systemctl is-enabled cannot be used for SysV-only services.
+ Instead we have to rely on invoke-rc.d. We patch the debian provider to check
+ if a unit is backed by an initscript and fall back to invoke-rc.d instead of
+ systemctl.
+Last-Update: 2017-03-07
+Forwarded: no (debian-specific)
+--- a/lib/puppet/provider/service/debian.rb
++++ b/lib/puppet/provider/service/debian.rb
+@@ -25,6 +25,14 @@
+     Dir.exists? "/run/systemd/system"
+   end
+ 
++  def is_sysv_unit?
++    # The sysv generator sets the SourcePath attribute to the name of the
++    # initscript. Use this to detect whether a unit is backed by an initscript
++    # or not.
++    source = systemctl(:show, "-pSourcePath", @resource[:name])
++    source.start_with? "SourcePath=/etc/init.d/"
++  end
++
+   def self.instances
+     # We need to merge services with systemd unit files with those only having
+     # an initscript. Note that we could use `systemctl --all` to get sysv
+@@ -57,7 +65,7 @@
+   end
+ 
+   def enabled?
+-    if self.class.runs_on_systemd?
++    if self.class.runs_on_systemd? and not is_sysv_unit?
+       begin
+         systemctl("is-enabled", @resource[:name])
+         return :true

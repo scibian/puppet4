@@ -1,0 +1,16 @@
+Author: Apollon Oikonomopoulos <apoikos@debian.org>
+Description: Do not use systemd as the default service provider in Jessie
+ Jessie's systemd does not respond to systemctl is-enabled for SysV-backed
+ units. The debian provider takes care of that however.
+Forwarded: no (Debian-specific)
+Last-Update: 2017-03-07
+--- a/lib/puppet/provider/service/systemd.rb
++++ b/lib/puppet/provider/service/systemd.rb
+@@ -22,7 +22,6 @@
+   defaultfor :osfamily => :redhat, :operatingsystemmajrelease => "7"
+   defaultfor :osfamily => :redhat, :operatingsystem => :fedora
+   defaultfor :osfamily => :suse
+-  defaultfor :operatingsystem => :debian
+   defaultfor :operatingsystem => :ubuntu, :operatingsystemmajrelease => ["15.04","15.10","16.04","16.10"]
+   defaultfor :operatingsystem => :cumuluslinux, :operatingsystemmajrelease => ["3"]
+ 
