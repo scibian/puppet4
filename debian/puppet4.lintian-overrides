@@ -1,8 +1,8 @@
 # Man pages are automatically generated, not much to do here
-puppet binary: manpage-has-bad-whatis-entry
+puppet4 binary: manpage-has-bad-whatis-entry
 
 # puppet manifests many use puppet as interpreter
-puppet binary: example-unusual-interpreter * #!puppet
+puppet4 binary: example-unusual-interpreter * #!puppet
 
 # Conditional update-rc.d invocations to handle the puppet-agent deprecation
-puppet: duplicate-updaterc.d-calls-in-postinst puppet
+puppet4: duplicate-updaterc.d-calls-in-postinst puppet

@@ -1,7 +1,7 @@
-Source: puppet
+Source: puppet4
 Section: admin
 Priority: optional
-Maintainer: Puppet Package Maintainers <pkg-puppet-devel@lists.alioth.debian.org>
+Maintainer: Scibian Project <packaging@scibian.org>
 Uploaders: Micah Anderson <micah@debian.org>,
  Andrew Pollock <apollock@debian.org>,
  Nigel Kersten <nigel@explanatorygap.net>,
@@ -14,12 +14,12 @@ Build-Depends:
  rake,
  hiera,
 Standards-Version: 3.9.8
-Vcs-Git: https://anonscm.debian.org/git/pkg-puppet/puppet.git
-Vcs-Browser: https://anonscm.debian.org/cgit/pkg-puppet/puppet.git
+Vcs-Git: https://github.com/scibian/puppet4.git
+Vcs-Browser: https://github.com/scibian/puppet4.git
 Homepage: https://github.com/puppetlabs/puppet
 Testsuite: autopkgtest
 
-Package: puppet
+Package: puppet4
 Architecture: all
 Depends: ${misc:Depends},
  adduser,
@@ -38,11 +38,16 @@ Recommends:
  ruby-selinux,
 Suggests: ruby-rrd
 Breaks: puppet-common (<< 4.5.1-1),
+        puppet4-common,
         puppetmaster-common (<< 4.4.2-1~),
         puppet-agent (<< 4.8.1-3~),
         facter (<< 2.4.0~)
 Replaces: puppet-common (<< 4.5.1-1),
-        puppetmaster-common (<< 4.4.2-1~)
+        puppet4-common,
+        puppetmaster-common (<< 4.4.2-1~),
+        puppet
+Provides: puppet
+Conflicts: puppet
 Description: configuration management system
  Puppet is a configuration management system that allows you to define
  the state of your IT infrastructure, then automatically enforces the
@@ -51,16 +56,20 @@ Description: configuration management system
  This package contains the puppet agent software and documentation.
  .
  To install and configure a puppet master, install one of the
- "puppet-master" or "puppet-master-passenger" packages.
+ "puppet4-master" or "puppet4-master-passenger" packages.
 
-Package: puppet-master
+Package: puppet4-master
 Architecture: all
 Depends: ${misc:Depends},
  puppet (= ${source:Version}),
  ruby | ruby-interpreter,
  lsb-base (>= 3.0-6),
-Breaks: puppetmaster (<< 4.8.1-3)
-Replaces: puppetmaster (<< 4.8.1-3)
+Breaks: puppetmaster (<< 4.8.1-3),
+        puppet-master
+Replaces: puppetmaster (<< 4.8.1-3),
+          puppet-master
+Provides: puppet-master
+Conflicts: puppet-master
 Description: configuration management system, master service
  Puppet is a configuration management system that allows you to define
  the state of your IT infrastructure, then automatically enforces the
@@ -70,16 +79,16 @@ Description: configuration management system, master service
  which is suitable for small deployments. For larger deployments or if you wish
  to support Puppet 3 clients, puppet-master-passenger should be used instead.
 
-Package: puppetmaster
+Package: puppetmaster4
 Section: oldlibs
 Priority: extra
 Architecture: all
-Depends: ${misc:Depends}, puppet-master
+Depends: ${misc:Depends}, puppet4-master
 Description: configuration management system, master service - transitional package
  This is a transitional package, superseded by puppet-master. It can safely be
  removed.
 
-Package: puppet-master-passenger
+Package: puppet4-master-passenger
 Architecture: all
 Depends: ${misc:Depends},
  apache2,
@@ -87,8 +96,13 @@ Depends: ${misc:Depends},
  lsb-base,
  puppet (= ${source:Version}),
  ruby | ruby-interpreter,
-Breaks: puppetmaster-passenger (<< 4.4.0-1)
-Replaces: puppetmaster-passenger (<< 4.4.0-1)
+Breaks: puppetmaster-passenger (<< 4.4.0-1),
+        puppetmaster4-passenger
+Replaces: puppetmaster-passenger (<< 4.4.0-1),
+          puppetmaster4-passenger,
+          puppet-master-passenger
+Provides: puppet-master-passenger
+Conflicts: puppet-master-passenger
 Description: configuration management system, scalable master service
  Puppet is a configuration management system that allows you to define
  the state of your IT infrastructure, then automatically enforces the
@@ -98,17 +112,17 @@ Description: configuration management system, scalable master service
  suitable for large deployments. This offers better scalability than
  the "puppet-master" package.
 
-Package: puppetmaster-passenger
+Package: puppetmaster4-passenger
 Section: oldlibs
 Priority: extra
 Architecture: all
-Depends: ${misc:Depends}, puppet-master-passenger
+Depends: ${misc:Depends}, puppet4-master-passenger
 Description: configuration management system, scalable master service - transitional package
  This is a transitional package, superseded by puppet-master-passenger. It can
  safely be removed.
 
-Package: puppet-common
-Depends: puppet, ${misc:Depends}
+Package: puppet4-common
+Depends: puppet4, ${misc:Depends}
 Architecture: all
 Priority: extra
 Section: oldlibs
