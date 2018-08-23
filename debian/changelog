@@ -1,3 +1,10 @@
+puppet4 (4.8.2-5~bpo8+1sci8u4) scibian8; urgency=medium
+
+  * Bugfix: Depends on scibian package facter2.4 instead of facter
+
+ -- Benoit Boccard <benoit-externe.boccard@edf.fr>  Thu, 23 Aug 2018 15:59:06 +0100
+
+
 puppet4 (4.8.2-5~bpo8+1sci8u3) scibian8; urgency=medium
 
   * Bugfix: Services names in test suite
