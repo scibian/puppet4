@@ -36,8 +36,8 @@ if [ "$1" = "configure" ]; then
 
 	if [ -z "$2" ]; then
 		# Disable the service by default on new installations
-		update-rc.d puppet defaults >/dev/null || true
-		update-rc.d puppet disable >/dev/null || true
+		update-rc.d puppet4 defaults >/dev/null || true
+		update-rc.d puppet4 disable >/dev/null || true
 	elif [ -n "$2" ] && dpkg --compare-versions "$2" gt "4.4.2-1~" && \
 		dpkg --compare-versions "$2" lt "4.8.1-3~"; then
 		# Between 4.4.2-1 and 4.8.1-3, puppet was called 'puppet-agent'
@@ -46,18 +46,18 @@ if [ "$1" = "configure" ]; then
 			# dh_systemd_enable will not enable the service by
 			# default as of 4.8.2-2; enable it if puppet-agent was
 			# enabled.
-			deb-systemd-helper unmask puppet.service >/dev/null || true
+			deb-systemd-helper unmask puppet4.service >/dev/null || true
 			if deb-systemd-helper --quiet was-enabled puppet-agent.service; then
-				deb-systemd-helper enable puppet.service >/dev/null || true
+				deb-systemd-helper enable puppet4.service >/dev/null || true
 			else
-				deb-systemd-helper update-state puppet.service >/dev/null || true
+				deb-systemd-helper update-state puppet4.service >/dev/null || true
 			fi
 		fi
 
 		if [ -x /etc/init.d/puppet-agent ] && \
 			! ls /etc/rc[S2345].d/S[0-9][0-9]puppet-agent >/dev/null 2>&1; then
-			update-rc.d puppet defaults >/dev/null || true
-			update-rc.d puppet disable >/dev/null || true
+			update-rc.d puppet4 defaults >/dev/null || true
+			update-rc.d puppet4 disable >/dev/null || true
 		fi
 
 		# Remove puppet-agent's symlinks to avoid duplicate starts

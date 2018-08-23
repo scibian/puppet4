@@ -12,10 +12,10 @@ if [ "$1" = "configure" ] && [ -z "$2" ]; then
             # This is a "fresh" install, i.e. pulled in as a dependency of
             # puppetmaster. Skip enabling puppet-master.service if puppetmaster
             # was not enabled
-            deb-systemd-helper unmask puppet-master.service >/dev/null || true
-            deb-systemd-helper update-state puppet-master.service >/dev/null || true
-            update-rc.d puppet-master defaults >/dev/null || true
-            update-rc.d puppet-master disable >/dev/null || true
+            deb-systemd-helper unmask puppet4-master.service >/dev/null || true
+            deb-systemd-helper update-state puppet4-master.service >/dev/null || true
+            update-rc.d puppet4-master defaults >/dev/null || true
+            update-rc.d puppet4-master disable >/dev/null || true
         fi
         deb-systemd-helper purge puppetmaster.service >/dev/null || true
         deb-systemd-helper unmask puppetmaster.service >/dev/null || true
