@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe package('puppet-master-passenger') do
+describe package('puppet4-master-passenger') do
   it { should be_installed }
 end
 

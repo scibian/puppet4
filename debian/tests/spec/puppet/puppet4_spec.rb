@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe package('puppet') do
+describe package('puppet4') do
   it { should be_installed }
 end
 
@@ -30,7 +30,7 @@ describe command('puppet master --configprint cadir') do
   its(:stdout) { should eq "/var/lib/puppet/ssl/ca\n" }
 end
 
-describe service('puppet') do
+describe service('puppet4') do
   it { should_not be_enabled }
   it { should_not be_running }
 end
