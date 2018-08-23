@@ -10,7 +10,7 @@ Uploaders: Micah Anderson <micah@debian.org>,
 Build-Depends:
  debhelper (>= 9~),
  dh-systemd,
- facter,
+ facter2.4,
  rake,
  hiera,
 Standards-Version: 3.9.8
@@ -23,7 +23,7 @@ Package: puppet4
 Architecture: all
 Depends: ${misc:Depends},
  adduser,
- facter,
+ facter2.4,
  ruby-augeas,
  hiera,
  lsb-base,
