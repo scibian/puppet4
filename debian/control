@@ -17,7 +17,6 @@ Standards-Version: 3.9.8
 Vcs-Git: https://github.com/scibian/puppet4.git
 Vcs-Browser: https://github.com/scibian/puppet4.git
 Homepage: https://github.com/puppetlabs/puppet
-Testsuite: autopkgtest
 
 Package: puppet4
 Architecture: all
