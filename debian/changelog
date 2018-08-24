@@ -1,3 +1,13 @@
+puppet4 (4.8.2-5~bpo8+1sci8u2) scibian8; urgency=medium
+
+  * Bugfix: dependancy name in control file
+  * Bugfix: rename init.d files
+  * Depends on scibian package facter2.4 instead of facter
+  * Remove old dummy packages as there are not necessary anymore
+  * Remove test suite
+
+ -- Benoit Boccard <benoit-externe.boccard@edf.fr>  Fri, 24 Aug 2018 11:11:54 +0200
+
 puppet4 (4.8.2-5~bpo8+1sci8u1) scibian8; urgency=medium
 
   * Fork puppet package to puppet4
