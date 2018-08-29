@@ -1,3 +1,9 @@
+puppet4 (4.8.2-5~bpo8+1sci8u3) scibian8; urgency=medium
+
+  * Bugfix: Service names in init scripts
+
+ -- Benoit Boccard <benoit-externe.boccard@edf.fr>  Wed, 29 Aug 2018 15:49:08 +0200
+
 puppet4 (4.8.2-5~bpo8+1sci8u2) scibian8; urgency=medium
 
   * Bugfix: dependancy name in control file
