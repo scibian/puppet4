@@ -1,6 +1,6 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          puppet-master
+# Provides:          puppet4-master
 # Required-Start:    $network $named $remote_fs $syslog
 # Required-Stop:     $network $named $remote_fs $syslog
 # Default-Start:     2 3 4 5

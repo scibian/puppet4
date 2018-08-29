@@ -1,6 +1,6 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          puppet
+# Provides:          puppet4
 # Required-Start:    $network $named $remote_fs $syslog
 # Required-Stop:     $network $named $remote_fs $syslog
 # Should-Start:      puppet-master apache2
